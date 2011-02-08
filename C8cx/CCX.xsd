@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="CCXDataSet" targetNamespace="http://www.coral8.com/cpx/2004/03/" xmlns:mstns="http://www.coral8.com/cpx/2004/03/" xmlns="http://www.coral8.com/cpx/2004/03/" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Program" msprop:Generator_UserTableName="Program" msprop:Generator_RowDeletedName="ProgramRowDeleted" msprop:Generator_RowChangedName="ProgramRowChanged" msprop:Generator_RowClassName="ProgramRow" msprop:Generator_RowChangingName="ProgramRowChanging" msprop:Generator_RowEvArgName="ProgramRowChangeEvent" msprop:Generator_RowEvHandlerName="ProgramRowChangeEventHandler" msprop:Generator_TableClassName="ProgramDataTable" msprop:Generator_TableVarName="tableProgram" msprop:Generator_RowDeletingName="ProgramRowDeleting" msprop:Generator_TablePropName="Program">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CompilerInfo" msprop:Generator_UserTableName="CompilerInfo" msprop:Generator_RowDeletedName="CompilerInfoRowDeleted" msprop:Generator_RowChangedName="CompilerInfoRowChanged" msprop:Generator_RowClassName="CompilerInfoRow" msprop:Generator_RowChangingName="CompilerInfoRowChanging" msprop:Generator_RowEvArgName="CompilerInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="CompilerInfoRowChangeEventHandler" msprop:Generator_TableClassName="CompilerInfoDataTable" msprop:Generator_TableVarName="tableCompilerInfo" msprop:Generator_RowDeletingName="CompilerInfoRowDeleting" msprop:Generator_TablePropName="CompilerInfo" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Item" nillable="true" msprop:Generator_UserTableName="Item" msprop:Generator_RowDeletedName="ItemRowDeleted" msprop:Generator_RowChangedName="ItemRowChanged" msprop:Generator_RowClassName="ItemRow" msprop:Generator_RowChangingName="ItemRowChanging" msprop:Generator_RowEvArgName="ItemRowChangeEvent" msprop:Generator_RowEvHandlerName="ItemRowChangeEventHandler" msprop:Generator_TableClassName="ItemDataTable" msprop:Generator_TableVarName="tableItem" msprop:Generator_RowDeletingName="ItemRowDeleting" msprop:Generator_TablePropName="Item" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:simpleContent msprop:Generator_UserColumnName="Item_Text" msprop:Generator_ColumnVarNameInTable="columnItem_Text" msprop:Generator_ColumnPropNameInRow="Item_Text" msprop:Generator_ColumnPropNameInTable="Item_TextColumn" msdata:ColumnName="Item_Text" msdata:Ordinal="1">
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                      <xs:attribute name="CompilerInfo_Id" msprop:Generator_UserColumnName="CompilerInfo_Id" msprop:Generator_ColumnVarNameInTable="columnCompilerInfo_Id" msprop:Generator_ColumnPropNameInRow="CompilerInfo_Id" msprop:Generator_ColumnPropNameInTable="CompilerInfo_IdColumn" type="xs:int" use="prohibited" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="CompilerInfo_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="CompilerInfo_Id" msprop:Generator_ColumnVarNameInTable="columnCompilerInfo_Id" msprop:Generator_ColumnPropNameInRow="CompilerInfo_Id" msprop:Generator_ColumnPropNameInTable="CompilerInfo_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="Program_Id" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Directory" msprop:Generator_UserTableName="Directory" msprop:Generator_RowDeletedName="DirectoryRowDeleted" msprop:Generator_RowChangedName="DirectoryRowChanged" msprop:Generator_RowClassName="DirectoryRow" msprop:Generator_RowChangingName="DirectoryRowChanging" msprop:Generator_RowEvArgName="DirectoryRowChangeEvent" msprop:Generator_RowEvHandlerName="DirectoryRowChangeEventHandler" msprop:Generator_TableClassName="DirectoryDataTable" msprop:Generator_TableVarName="tableDirectory" msprop:Generator_RowDeletingName="DirectoryRowDeleting" msprop:Generator_TablePropName="Directory" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Section" msprop:Generator_UserTableName="Section" msprop:Generator_RowDeletedName="SectionRowDeleted" msprop:Generator_RowChangedName="SectionRowChanged" msprop:Generator_RowClassName="SectionRow" msprop:Generator_RowChangingName="SectionRowChanging" msprop:Generator_RowEvArgName="SectionRowChangeEvent" msprop:Generator_RowEvHandlerName="SectionRowChangeEventHandler" msprop:Generator_TableClassName="SectionDataTable" msprop:Generator_TableVarName="tableSection" msprop:Generator_RowDeletingName="SectionRowDeleting" msprop:Generator_TablePropName="Section" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Value" nillable="true" msprop:Generator_UserTableName="Value" msprop:Generator_RowDeletedName="ValueRowDeleted" msprop:Generator_RowChangedName="ValueRowChanged" msprop:Generator_RowClassName="ValueRow" msprop:Generator_RowChangingName="ValueRowChanging" msprop:Generator_RowEvArgName="ValueRowChangeEvent" msprop:Generator_RowEvHandlerName="ValueRowChangeEventHandler" msprop:Generator_TableClassName="ValueDataTable" msprop:Generator_TableVarName="tableValue" msprop:Generator_RowDeletingName="ValueRowDeleting" msprop:Generator_TablePropName="Value" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:simpleContent msprop:Generator_UserColumnName="Value_Text" msprop:Generator_ColumnVarNameInTable="columnValue_Text" msprop:Generator_ColumnPropNameInRow="Value_Text" msprop:Generator_ColumnPropNameInTable="Value_TextColumn" msdata:ColumnName="Value_Text" msdata:Ordinal="1">
+                          <xs:extension base="xs:string">
+                            <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                            <xs:attribute name="Section_Id" msprop:Generator_UserColumnName="Section_Id" msprop:Generator_ColumnVarNameInTable="columnSection_Id" msprop:Generator_ColumnPropNameInRow="Section_Id" msprop:Generator_ColumnPropNameInTable="Section_IdColumn" type="xs:int" use="prohibited" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                  <xs:attribute name="Section_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Section_Id" msprop:Generator_ColumnVarNameInTable="columnSection_Id" msprop:Generator_ColumnPropNameInRow="Section_Id" msprop:Generator_ColumnPropNameInTable="Section_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Directory_Id" msprop:Generator_UserColumnName="Directory_Id" msprop:Generator_ColumnVarNameInTable="columnDirectory_Id" msprop:Generator_ColumnPropNameInRow="Directory_Id" msprop:Generator_ColumnPropNameInTable="Directory_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Directory_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Directory_Id" msprop:Generator_ColumnVarNameInTable="columnDirectory_Id" msprop:Generator_ColumnPropNameInRow="Directory_Id" msprop:Generator_ColumnPropNameInTable="Directory_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="Program_Id" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TupleDescriptors" msprop:Generator_UserTableName="TupleDescriptors" msprop:Generator_RowDeletedName="TupleDescriptorsRowDeleted" msprop:Generator_RowChangedName="TupleDescriptorsRowChanged" msprop:Generator_RowClassName="TupleDescriptorsRow" msprop:Generator_RowChangingName="TupleDescriptorsRowChanging" msprop:Generator_RowEvArgName="TupleDescriptorsRowChangeEvent" msprop:Generator_RowEvHandlerName="TupleDescriptorsRowChangeEventHandler" msprop:Generator_TableClassName="TupleDescriptorsDataTable" msprop:Generator_TableVarName="tableTupleDescriptors" msprop:Generator_RowDeletingName="TupleDescriptorsRowDeleting" msprop:Generator_TablePropName="TupleDescriptors" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TupleDescriptor" msprop:Generator_UserTableName="TupleDescriptor" msprop:Generator_RowDeletedName="TupleDescriptorRowDeleted" msprop:Generator_RowChangedName="TupleDescriptorRowChanged" msprop:Generator_RowClassName="TupleDescriptorRow" msprop:Generator_RowChangingName="TupleDescriptorRowChanging" msprop:Generator_RowEvArgName="TupleDescriptorRowChangeEvent" msprop:Generator_RowEvHandlerName="TupleDescriptorRowChangeEventHandler" msprop:Generator_TableClassName="TupleDescriptorDataTable" msprop:Generator_TableVarName="tableTupleDescriptor" msprop:Generator_RowDeletingName="TupleDescriptorRowDeleting" msprop:Generator_TablePropName="TupleDescriptor" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Field" msprop:Generator_UserTableName="Field" msprop:Generator_RowDeletedName="FieldRowDeleted" msprop:Generator_RowChangedName="FieldRowChanged" msprop:Generator_RowClassName="FieldRow" msprop:Generator_RowChangingName="FieldRowChanging" msprop:Generator_RowEvArgName="FieldRowChangeEvent" msprop:Generator_RowEvHandlerName="FieldRowChangeEventHandler" msprop:Generator_TableClassName="FieldDataTable" msprop:Generator_TableVarName="tableField" msprop:Generator_RowDeletingName="FieldRowDeleting" msprop:Generator_TablePropName="Field" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                        <xs:attribute name="C8Type" form="unqualified" msprop:Generator_UserColumnName="C8Type" msprop:Generator_ColumnVarNameInTable="columnC8Type" msprop:Generator_ColumnPropNameInRow="C8Type" msprop:Generator_ColumnPropNameInTable="C8TypeColumn" type="xs:string" />
+                        <xs:attribute name="TupleDescriptor_Id" msprop:Generator_UserColumnName="TupleDescriptor_Id" msprop:Generator_ColumnVarNameInTable="columnTupleDescriptor_Id" msprop:Generator_ColumnPropNameInRow="TupleDescriptor_Id" msprop:Generator_ColumnPropNameInTable="TupleDescriptor_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                  <xs:attribute name="TupleDescriptor_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="TupleDescriptor_Id" msprop:Generator_ColumnVarNameInTable="columnTupleDescriptor_Id" msprop:Generator_ColumnPropNameInRow="TupleDescriptor_Id" msprop:Generator_ColumnPropNameInTable="TupleDescriptor_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="TupleDescriptors_Id" msprop:Generator_UserColumnName="TupleDescriptors_Id" msprop:Generator_ColumnVarNameInTable="columnTupleDescriptors_Id" msprop:Generator_ColumnPropNameInRow="TupleDescriptors_Id" msprop:Generator_ColumnPropNameInTable="TupleDescriptors_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="TupleDescriptors_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="TupleDescriptors_Id" msprop:Generator_ColumnVarNameInTable="columnTupleDescriptors_Id" msprop:Generator_ColumnPropNameInRow="TupleDescriptors_Id" msprop:Generator_ColumnPropNameInTable="TupleDescriptors_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="Program_Id" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Modules" msprop:Generator_UserTableName="Modules" msprop:Generator_RowDeletedName="ModulesRowDeleted" msprop:Generator_RowChangedName="ModulesRowChanged" msprop:Generator_RowClassName="ModulesRow" msprop:Generator_RowChangingName="ModulesRowChanging" msprop:Generator_RowEvArgName="ModulesRowChangeEvent" msprop:Generator_RowEvHandlerName="ModulesRowChangeEventHandler" msprop:Generator_TableClassName="ModulesDataTable" msprop:Generator_TableVarName="tableModules" msprop:Generator_RowDeletingName="ModulesRowDeleting" msprop:Generator_TablePropName="Modules" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Module" msprop:Generator_UserTableName="Module" msprop:Generator_RowDeletedName="ModuleRowDeleted" msprop:Generator_RowChangedName="ModuleRowChanged" msprop:Generator_RowClassName="ModuleRow" msprop:Generator_RowChangingName="ModuleRowChanging" msprop:Generator_RowEvArgName="ModuleRowChangeEvent" msprop:Generator_RowEvHandlerName="ModuleRowChangeEventHandler" msprop:Generator_TableClassName="ModuleDataTable" msprop:Generator_TableVarName="tableModule" msprop:Generator_RowDeletingName="ModuleRowDeleting" msprop:Generator_TablePropName="Module" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Streams" msprop:Generator_UserTableName="Streams" msprop:Generator_RowDeletedName="StreamsRowDeleted" msprop:Generator_RowChangedName="StreamsRowChanged" msprop:Generator_RowClassName="StreamsRow" msprop:Generator_RowChangingName="StreamsRowChanging" msprop:Generator_RowEvArgName="StreamsRowChangeEvent" msprop:Generator_RowEvHandlerName="StreamsRowChangeEventHandler" msprop:Generator_TableClassName="StreamsDataTable" msprop:Generator_TableVarName="tableStreams" msprop:Generator_RowDeletingName="StreamsRowDeleting" msprop:Generator_TablePropName="Streams" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="Stream" msprop:Generator_UserTableName="Stream" msprop:Generator_RowDeletedName="StreamRowDeleted" msprop:Generator_RowChangedName="StreamRowChanged" msprop:Generator_RowClassName="StreamRow" msprop:Generator_RowChangingName="StreamRowChanging" msprop:Generator_RowEvArgName="StreamRowChangeEvent" msprop:Generator_RowEvHandlerName="StreamRowChangeEventHandler" msprop:Generator_TableClassName="StreamDataTable" msprop:Generator_TableVarName="tableStream" msprop:Generator_RowDeletingName="StreamRowDeleting" msprop:Generator_TablePropName="Stream" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="Connection" msprop:Generator_UserTableName="Connection" msprop:Generator_RowDeletedName="ConnectionRowDeleted" msprop:Generator_RowChangedName="ConnectionRowChanged" msprop:Generator_RowClassName="ConnectionRow" msprop:Generator_RowChangingName="ConnectionRowChanging" msprop:Generator_RowEvArgName="ConnectionRowChangeEvent" msprop:Generator_RowEvHandlerName="ConnectionRowChangeEventHandler" msprop:Generator_TableClassName="ConnectionDataTable" msprop:Generator_TableVarName="tableConnection" msprop:Generator_RowDeletingName="ConnectionRowDeleting" msprop:Generator_TablePropName="Connection" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:complexType>
+                                    <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                                    <xs:attribute name="URI" form="unqualified" msprop:Generator_UserColumnName="URI" msprop:Generator_ColumnVarNameInTable="columnURI" msprop:Generator_ColumnPropNameInRow="URI" msprop:Generator_ColumnPropNameInTable="URIColumn" type="xs:string" />
+                                    <xs:attribute name="Direction" form="unqualified" msprop:Generator_UserColumnName="Direction" msprop:Generator_ColumnVarNameInTable="columnDirection" msprop:Generator_ColumnPropNameInRow="Direction" msprop:Generator_ColumnPropNameInTable="DirectionColumn" type="xs:string" />
+                                    <xs:attribute name="Type" form="unqualified" msprop:Generator_UserColumnName="Type" msprop:Generator_ColumnVarNameInTable="columnType" msprop:Generator_ColumnPropNameInRow="Type" msprop:Generator_ColumnPropNameInTable="TypeColumn" type="xs:string" />
+                                    <xs:attribute name="Stream_Id" msprop:Generator_UserColumnName="Stream_Id" msprop:Generator_ColumnVarNameInTable="columnStream_Id" msprop:Generator_ColumnPropNameInRow="Stream_Id" msprop:Generator_ColumnPropNameInTable="Stream_IdColumn" type="xs:int" use="prohibited" />
+                                  </xs:complexType>
+                                </xs:element>
+                              </xs:sequence>
+                              <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                              <xs:attribute name="TupleDescriptorRef" form="unqualified" msprop:Generator_UserColumnName="TupleDescriptorRef" msprop:Generator_ColumnVarNameInTable="columnTupleDescriptorRef" msprop:Generator_ColumnPropNameInRow="TupleDescriptorRef" msprop:Generator_ColumnPropNameInTable="TupleDescriptorRefColumn" type="xs:string" />
+                              <xs:attribute name="SetServerTimestamp" form="unqualified" msprop:Generator_UserColumnName="SetServerTimestamp" msprop:Generator_ColumnVarNameInTable="columnSetServerTimestamp" msprop:Generator_ColumnPropNameInRow="SetServerTimestamp" msprop:Generator_ColumnPropNameInTable="SetServerTimestampColumn" type="xs:string" />
+                              <xs:attribute name="Stream_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Stream_Id" msprop:Generator_ColumnVarNameInTable="columnStream_Id" msprop:Generator_ColumnPropNameInRow="Stream_Id" msprop:Generator_ColumnPropNameInTable="Stream_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                              <xs:attribute name="Streams_Id" msprop:Generator_UserColumnName="Streams_Id" msprop:Generator_ColumnVarNameInTable="columnStreams_Id" msprop:Generator_ColumnPropNameInRow="Streams_Id" msprop:Generator_ColumnPropNameInTable="Streams_IdColumn" type="xs:int" use="prohibited" />
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Streams_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Streams_Id" msprop:Generator_ColumnVarNameInTable="columnStreams_Id" msprop:Generator_ColumnPropNameInRow="Streams_Id" msprop:Generator_ColumnPropNameInTable="Streams_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                        <xs:attribute name="Module_Id" msprop:Generator_UserColumnName="Module_Id" msprop:Generator_ColumnVarNameInTable="columnModule_Id" msprop:Generator_ColumnPropNameInRow="Module_Id" msprop:Generator_ColumnPropNameInTable="Module_IdColumn" type="xs:int" use="prohibited" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+                  <xs:attribute name="C8Type" form="unqualified" msprop:Generator_UserColumnName="C8Type" msprop:Generator_ColumnVarNameInTable="columnC8Type" msprop:Generator_ColumnPropNameInRow="C8Type" msprop:Generator_ColumnPropNameInTable="C8TypeColumn" type="xs:string" />
+                  <xs:attribute name="DebugMode" form="unqualified" msprop:Generator_UserColumnName="DebugMode" msprop:Generator_ColumnVarNameInTable="columnDebugMode" msprop:Generator_ColumnPropNameInRow="DebugMode" msprop:Generator_ColumnPropNameInTable="DebugModeColumn" type="xs:string" />
+                  <xs:attribute name="Module_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Module_Id" msprop:Generator_ColumnVarNameInTable="columnModule_Id" msprop:Generator_ColumnPropNameInRow="Module_Id" msprop:Generator_ColumnPropNameInTable="Module_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+                  <xs:attribute name="Modules_Id" msprop:Generator_UserColumnName="Modules_Id" msprop:Generator_ColumnVarNameInTable="columnModules_Id" msprop:Generator_ColumnPropNameInRow="Modules_Id" msprop:Generator_ColumnPropNameInTable="Modules_IdColumn" type="xs:int" use="prohibited" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Modules_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Modules_Id" msprop:Generator_ColumnVarNameInTable="columnModules_Id" msprop:Generator_ColumnPropNameInRow="Modules_Id" msprop:Generator_ColumnPropNameInTable="Modules_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+            <xs:attribute name="Program_Id" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" use="prohibited" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Name" form="unqualified" msprop:Generator_UserColumnName="Name" msprop:Generator_ColumnVarNameInTable="columnName" msprop:Generator_ColumnPropNameInRow="Name" msprop:Generator_ColumnPropNameInTable="NameColumn" type="xs:string" />
+      <xs:attribute name="Program_Id" msdata:AutoIncrement="true" msprop:Generator_UserColumnName="Program_Id" msprop:Generator_ColumnVarNameInTable="columnProgram_Id" msprop:Generator_ColumnPropNameInRow="Program_Id" msprop:Generator_ColumnPropNameInTable="Program_IdColumn" type="xs:int" msdata:AllowDBNull="false" use="prohibited" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CCXDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="CCXDataSet" msprop:Generator_DataSetName="CCXDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="Program" />
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="CompilerInfo_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:CompilerInfo" />
+      <xs:field xpath="@mstns:CompilerInfo_Id" />
+    </xs:unique>
+    <xs:unique name="Section_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Section" />
+      <xs:field xpath="@mstns:Section_Id" />
+    </xs:unique>
+    <xs:unique name="Directory_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Directory" />
+      <xs:field xpath="@mstns:Directory_Id" />
+    </xs:unique>
+    <xs:unique name="TupleDescriptor_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TupleDescriptor" />
+      <xs:field xpath="@mstns:TupleDescriptor_Id" />
+    </xs:unique>
+    <xs:unique name="TupleDescriptors_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:TupleDescriptors" />
+      <xs:field xpath="@mstns:TupleDescriptors_Id" />
+    </xs:unique>
+    <xs:unique name="Stream_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Stream" />
+      <xs:field xpath="@mstns:Stream_Id" />
+    </xs:unique>
+    <xs:unique name="Streams_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Streams" />
+      <xs:field xpath="@mstns:Streams_Id" />
+    </xs:unique>
+    <xs:unique name="Module_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Module" />
+      <xs:field xpath="@mstns:Module_Id" />
+    </xs:unique>
+    <xs:unique name="Modules_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Modules" />
+      <xs:field xpath="@mstns:Modules_Id" />
+    </xs:unique>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Program" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:unique>
+    <xs:keyref name="Program_Modules" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Program_Modules" msprop:rel_Generator_RelationVarName="relationProgram_Modules" msprop:rel_Generator_UserChildTable="Modules" msprop:rel_Generator_UserParentTable="Program" msprop:rel_Generator_ParentPropName="ProgramRow" msprop:rel_Generator_ChildPropName="GetModulesRows">
+      <xs:selector xpath=".//mstns:Modules" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:keyref>
+    <xs:keyref name="Modules_Module" refer="Modules_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Modules_Module" msprop:rel_Generator_RelationVarName="relationModules_Module" msprop:rel_Generator_UserChildTable="Module" msprop:rel_Generator_UserParentTable="Modules" msprop:rel_Generator_ParentPropName="ModulesRow" msprop:rel_Generator_ChildPropName="GetModuleRows">
+      <xs:selector xpath=".//mstns:Module" />
+      <xs:field xpath="@mstns:Modules_Id" />
+    </xs:keyref>
+    <xs:keyref name="Module_Streams" refer="Module_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Module_Streams" msprop:rel_Generator_RelationVarName="relationModule_Streams" msprop:rel_Generator_UserChildTable="Streams" msprop:rel_Generator_UserParentTable="Module" msprop:rel_Generator_ParentPropName="ModuleRow" msprop:rel_Generator_ChildPropName="GetStreamsRows">
+      <xs:selector xpath=".//mstns:Streams" />
+      <xs:field xpath="@mstns:Module_Id" />
+    </xs:keyref>
+    <xs:keyref name="Streams_Stream" refer="Streams_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Streams_Stream" msprop:rel_Generator_RelationVarName="relationStreams_Stream" msprop:rel_Generator_UserChildTable="Stream" msprop:rel_Generator_UserParentTable="Streams" msprop:rel_Generator_ParentPropName="StreamsRow" msprop:rel_Generator_ChildPropName="GetStreamRows">
+      <xs:selector xpath=".//mstns:Stream" />
+      <xs:field xpath="@mstns:Streams_Id" />
+    </xs:keyref>
+    <xs:keyref name="Stream_Connection" refer="Stream_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Stream_Connection" msprop:rel_Generator_RelationVarName="relationStream_Connection" msprop:rel_Generator_UserChildTable="Connection" msprop:rel_Generator_UserParentTable="Stream" msprop:rel_Generator_ParentPropName="StreamRow" msprop:rel_Generator_ChildPropName="GetConnectionRows">
+      <xs:selector xpath=".//mstns:Connection" />
+      <xs:field xpath="@mstns:Stream_Id" />
+    </xs:keyref>
+    <xs:keyref name="Program_TupleDescriptors" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Program_TupleDescriptors" msprop:rel_Generator_RelationVarName="relationProgram_TupleDescriptors" msprop:rel_Generator_UserChildTable="TupleDescriptors" msprop:rel_Generator_UserParentTable="Program" msprop:rel_Generator_ParentPropName="ProgramRow" msprop:rel_Generator_ChildPropName="GetTupleDescriptorsRows">
+      <xs:selector xpath=".//mstns:TupleDescriptors" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:keyref>
+    <xs:keyref name="TupleDescriptors_TupleDescriptor" refer="TupleDescriptors_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="TupleDescriptors_TupleDescriptor" msprop:rel_Generator_RelationVarName="relationTupleDescriptors_TupleDescriptor" msprop:rel_Generator_UserChildTable="TupleDescriptor" msprop:rel_Generator_UserParentTable="TupleDescriptors" msprop:rel_Generator_ParentPropName="TupleDescriptorsRow" msprop:rel_Generator_ChildPropName="GetTupleDescriptorRows">
+      <xs:selector xpath=".//mstns:TupleDescriptor" />
+      <xs:field xpath="@mstns:TupleDescriptors_Id" />
+    </xs:keyref>
+    <xs:keyref name="TupleDescriptor_Field" refer="TupleDescriptor_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="TupleDescriptor_Field" msprop:rel_Generator_RelationVarName="relationTupleDescriptor_Field" msprop:rel_Generator_UserChildTable="Field" msprop:rel_Generator_UserParentTable="TupleDescriptor" msprop:rel_Generator_ParentPropName="TupleDescriptorRow" msprop:rel_Generator_ChildPropName="GetFieldRows">
+      <xs:selector xpath=".//mstns:Field" />
+      <xs:field xpath="@mstns:TupleDescriptor_Id" />
+    </xs:keyref>
+    <xs:keyref name="Program_Directory" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Program_Directory" msprop:rel_Generator_RelationVarName="relationProgram_Directory" msprop:rel_Generator_UserChildTable="Directory" msprop:rel_Generator_UserParentTable="Program" msprop:rel_Generator_ParentPropName="ProgramRow" msprop:rel_Generator_ChildPropName="GetDirectoryRows">
+      <xs:selector xpath=".//mstns:Directory" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:keyref>
+    <xs:keyref name="Directory_Section" refer="Directory_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Directory_Section" msprop:rel_Generator_RelationVarName="relationDirectory_Section" msprop:rel_Generator_UserChildTable="Section" msprop:rel_Generator_UserParentTable="Directory" msprop:rel_Generator_ParentPropName="DirectoryRow" msprop:rel_Generator_ChildPropName="GetSectionRows">
+      <xs:selector xpath=".//mstns:Section" />
+      <xs:field xpath="@mstns:Directory_Id" />
+    </xs:keyref>
+    <xs:keyref name="Section_Value" refer="Section_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Section_Value" msprop:rel_Generator_RelationVarName="relationSection_Value" msprop:rel_Generator_UserChildTable="Value" msprop:rel_Generator_UserParentTable="Section" msprop:rel_Generator_ParentPropName="SectionRow" msprop:rel_Generator_ChildPropName="GetValueRows">
+      <xs:selector xpath=".//mstns:Value" />
+      <xs:field xpath="@mstns:Section_Id" />
+    </xs:keyref>
+    <xs:keyref name="Program_CompilerInfo" refer="Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="Program_CompilerInfo" msprop:rel_Generator_RelationVarName="relationProgram_CompilerInfo" msprop:rel_Generator_UserChildTable="CompilerInfo" msprop:rel_Generator_UserParentTable="Program" msprop:rel_Generator_ParentPropName="ProgramRow" msprop:rel_Generator_ChildPropName="GetCompilerInfoRows">
+      <xs:selector xpath=".//mstns:CompilerInfo" />
+      <xs:field xpath="@mstns:Program_Id" />
+    </xs:keyref>
+    <xs:keyref name="CompilerInfo_Item" refer="CompilerInfo_Constraint1" msdata:IsNested="true" msprop:rel_Generator_UserRelationName="CompilerInfo_Item" msprop:rel_Generator_RelationVarName="relationCompilerInfo_Item" msprop:rel_Generator_UserChildTable="Item" msprop:rel_Generator_UserParentTable="CompilerInfo" msprop:rel_Generator_ParentPropName="CompilerInfoRow" msprop:rel_Generator_ChildPropName="GetItemRows">
+      <xs:selector xpath=".//mstns:Item" />
+      <xs:field xpath="@mstns:CompilerInfo_Id" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

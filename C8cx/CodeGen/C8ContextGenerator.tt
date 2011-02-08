@@ -1,0 +1,49 @@
+﻿<#@ include file="C8TupleTemplate.tt" #>
+<#@ include file="C8OutStreamTemplate.tt" #>
+<#+
+public class C8ContextGenerator : Generator
+{
+
+	public string ServerUrl {get;set;}
+	public string Workspace {get;set;}
+	public string Application {get;set;}
+
+	protected override void RunCore()
+	{
+		var core =	new C8cx.C8Core(ServerUrl);
+		
+	    var status = core.GetApplicationStatus(Workspace, Application, false);
+        string CcxFile = (from item in status.CclCompilerInfo[0].Value where item.Name == "CcxFile" select item.Value).Single();
+        string RepositoryPath = "";
+        if (!Path.IsPathRooted(CcxFile))
+        {
+            RepositoryPath = (from item in status.CclCompilerInfo[0].Value where item.Name == "RepositoryPath" select item.Value).Single();
+            CcxFile = Path.Combine(RepositoryPath, CcxFile);
+        }
+        var CCX = C8Core.LoadCCX(CcxFile);
+		var tdref = new Dictionary<string,string>();
+        foreach (var c8strm in CCX.Stream )
+        {
+            if (!tdref.ContainsKey(c8strm.TupleDescriptorRef))
+            {
+                
+                C8TupleTemplate tt = new C8TupleTemplate();
+				tt.BaseName = C8Core.StreamNameToClassName(c8strm.Name);
+				tt.TDRef = c8strm.TupleDescriptorRef;
+				tt.CCX = CCX;
+				tt.RenderToFile(tt.ClassName + ".cs");
+				tdref[c8strm.TupleDescriptorRef] = tt.ClassName;
+            }
+            
+            C8OutStreamTemplate st = new C8OutStreamTemplate();
+            st.BaseName = C8Core.StreamNameToClassName(c8strm.Name);
+            st.TDRef = c8strm.TupleDescriptorRef;
+            st.CCX = CCX;
+            st.TupleClassName = tdref[c8strm.TupleDescriptorRef];
+			st.RenderToFile(st.ClassName + ".cs");
+
+        }
+	
+	}
+}
+#>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.coral8.com/cpx/2004/03/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="TupleDescriptor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Field">
+          <xs:complexType>
+            <xs:attribute name="Name" type="xs:string" use="required" />
+            <xs:attribute name="C8Type" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="Name" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

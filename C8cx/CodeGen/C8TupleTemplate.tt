@@ -1,0 +1,49 @@
+﻿<#+
+public class C8TupleTemplate : Template
+{
+	public string BaseName {get;set;}
+	public string ClassName { get { return BaseName+"C8Tuple"; } }
+	public string TDRef {get;set;}
+	public CCXDataSet CCX {get;set;}
+	protected override void RenderCore()
+	{
+		var tdesc = CCX.TupleDescriptor.Where(tdrow => tdrow.Name == TDRef).Single();
+#>
+using System;
+using System.Runtime.Serialization;
+using C8cx;
+using System.Diagnostics;
+
+[DataContract]
+public partial class <#= ClassName #> : C8Tuple
+{
+    public <#= ClassName #>(C8Tuple tpl): base(tpl){}
+<#+
+	//PushIndent("\t");
+	int ii=1;
+	foreach (CCXDataSet.FieldRow fr in tdesc.GetFieldRows())
+    {#>
+    
+    [DebuggerNonUserCode]
+    [DataMember]
+    public <#= C8Core.ConvertC8StringTypeToCLRType(fr.C8Type).FullName #> @<#= fr.Name #> 
+    { 
+		get
+		{
+			return Field<<#= C8Core.ConvertC8StringTypeToCLRType(fr.C8Type).FullName #>>(<#= ii #>);
+		}
+		set
+		{
+			this[<#= ii #>] = value;
+		}
+	}
+    <#+ 
+    ii++;
+    }
+	//PopIndent();
+#>
+}
+<#+ 
+	}
+}
+#>

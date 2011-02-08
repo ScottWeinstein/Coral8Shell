@@ -1,0 +1,47 @@
+﻿<#+
+public class C8OutStreamTemplate : Template
+{
+	public string BaseName {get;set;}
+	public string TupleClassName {get;set;}
+	public string ClassName { get { return BaseName+"C8Stream"; }}
+	public string TDRef {get;set;}
+	public CCXDataSet CCX {get;set;}
+
+	protected override void RenderCore()
+	{
+		var tdesc = CCX.TupleDescriptor.Where(tdrow => tdrow.Name == TDRef).Single();
+#>
+using System;
+using C8cx;
+public partial class <#= ClassName #> : IStreamedDataSource<<#= TupleClassName #>>, IDisposable
+{
+    public event Action<<#= TupleClassName #>> DataReceived;
+
+	public <#= ClassName #>(string streamUrl)
+	{
+	    DataReceived += d => { };
+		_c8stream = new C8cx.C8OutputStream(streamUrl); 
+		_c8stream.DataReceived += (tpl) => DataReceived(new <#= TupleClassName #>(tpl)); 
+	}
+	
+	public void Connect()
+    {
+		_c8stream.Connect();
+	}
+
+    public void Dispose()
+    {
+        _c8stream.Dispose();		
+    }
+
+    private C8OutputStream _c8stream;
+    public IStreamedDataSource<<#= TupleClassName #>> Where(Predicate<<#= TupleClassName #>> p)
+    {
+        throw new NotSupportedException("");
+    }
+
+}
+<#+ 
+	}
+}
+#>

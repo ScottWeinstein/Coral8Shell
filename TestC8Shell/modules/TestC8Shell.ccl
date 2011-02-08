@@ -1,0 +1,178 @@
+<DefineCPLModule xmlns="http://www.coral8.com/cpl/2004/04/" Name="TestC8Shell" CplVersion="2" SetServerTimestamp="true" SynchronizationFromParent="true">
+ <Interface/>
+ <Body>
+  <Queries>
+   <Query Name="Query">
+    <QueryText><![CDATA[--CREATE SCHEMA TSchema ( toAddr STRING , subject string, message string);
+--create input STREAM intRandom SCHEMA tschema;
+--ATTACH INPUT ADAPTER RandomMessageGenerator TYPE RandomTuplesGeneratorAdapterType
+--TO STREAM intRandom
+--PROPERTIES
+--    RATE = "1"
+--;
+
+
+create local stream Stocks SCHEMA (sec String);
+create window StockWindow SCHEMA (sec String) keep last per sec;
+create window StockPairWindow SCHEMA  StockPairSchema keep last per seca per secb;
+insert into StockWindow select * from Stocks;
+
+CREATE SCHEMA           StockPairSchema( SecA STRING,SecB STRING );
+CREATE SCHEMA           StockPairCorrelationSchema INHERITS from StockPairSchema (CORR  FLOAT) ;
+CREATE local   STREAM  StockPairs          SCHEMA StockPairSchema;
+CREATE local   STREAM  StockPairs_filter          SCHEMA StockPairSchema;
+
+insert into StockPairs 
+select 
+IF swA.sec < swB.sec THEN swA.sec ELSE swB.sec END as SecA,
+IF swA.sec < swB.sec THEN swB.sec ELSE swA.sec END as SecB
+from 
+    StockWindow swA join stockWindow swB on swA.Sec <> swB.sec;
+    --StockPairWindow as spw  left outer join on Sec <> spw.SecA; ;
+--not 
+--and ((sw1.sec, sw2.sec) not in (select secA,SecB from StockPairWindow));
+
+--INSERT into StockPairs_filter
+--select sp.SecA,sp.SecB from 
+--StockPairs sp
+--where not exists (select select
+--StockPairs sp left outer join StockPairWindow spw on  sp.secA <> spw.secA and sp.secB <> spw.secb;
+
+insert into StockPairWindow select * from StockPairs;
+
+
+CREATE INPUT    STREAM  StockCorrelations   SCHEMA StockPairCorrelationSchema;
+ATTACH OUTPUT ADAPTER PairstoCorrelationsFunc TYPE PoShAdapter TO STREAM StockPairs
+PROPERTIES
+    RESULTSSTREAM = "ccl://localhost:6789/Stream/Default/TestC8Shell/StockCorrelations",
+    BEGINBLOCK    = [[
+$csCode = @"
+using System;
+using System.Collections.Generic;
+using System.Linq;
+namespace Demo 
+{
+    public static class Stats
+    {
+        private static IEnumerable<TResult> Zip<TFirst, TSecond, TResult>(IList<TFirst> first, IList<TSecond> second, Func<TFirst, TSecond, TResult> func)
+        {
+            for (int ii = 0; ii < Math.Min(first.Count(),second.Count()); ii++)
+            	yield return func(first[ii],second[ii]);
+        }
+        public static double Correlate(object[] s1,object[] s2)
+        {
+            return Correlate(s1.Cast<double>(), s2.Cast<double>());
+        }
+        public static double Correlate(IEnumerable<double> s1,IEnumerable<double> s2)
+        {
+            var sum1 = s1.Sum();
+            var sum2 = s2.Sum();
+            var sumSq1 = s1.Select(v=> v*v).Sum();
+            var sumSq2 = s2.Select(v=> v*v).Sum();
+            var pSum = Zip(s1.ToList(),s2.ToList(), ( a, b) => a*b).Sum();
+            var len = s1.Count();
+            var num = pSum - ((sum1 * sum2) / len);
+            var denom = Math.Sqrt(((sumSq1 - (sum1 * sum1) / len) * (sumSq2 - (sum2 * sum2) / len)));
+            return (denom == 0.0) ? 0 : num / denom;
+        }
+    }
+}
+"@
+Add-Type -TypeDefinition $csCode -Language CSharpVersion3 -PassThru 
+
+$wc = New-Object Net.WebClient    
+function Get-LogReturns ($sec)
+{
+    $qry = "http://ichart.finance.yahoo.com/table.csv?s=$sec"
+    $secAData = ConvertFrom-Csv $wc.DownloadString($qry) | select  -First 10 | % { $_.'Adj Close' }
+    for ($i=0; $i -lt $secAData.Count-1; $i++) { [Math]::Log( $secAData[$i] / $secAData[$i+1] )  }
+}
+]],
+    PROCESSBlock       = [[
+        foreach ($t in $input)
+        {
+            $aret = Get-LogReturns $t["SecA"]
+            $bret = Get-LogReturns $t["SecB"]
+            $c = [Demo.Stats]::Correlate($aret, $bret)
+            ,,($t["SecA"],$t["SecB"],$c)
+        }
+]]
+;
+
+insert into stocks values ("C") OUTPUT at STARTUP;
+insert into stocks values ("T") OUTPUT at STARTUP;
+insert into stocks values ("SAPE") OUTPUT at STARTUP;
+insert into stocks values ("MSFT") OUTPUT at STARTUP;
+
+--INSERT into StockPairs values ("MSFT","GOOG")
+--OUTPUT at STARTUP;
+
+
+
+
+
+--CREATE SCHEMA           ProcessSchema( ProcessName STRING,Computer STRING );
+--CREATE OUTPUT   STREAM  outProcess          SCHEMA ProcessSchema;
+--CREATE INPUT    STREAM  inCreatedProcess   SCHEMA ProcessSchema;
+--ATTACH OUTPUT ADAPTER watchForNewProcs TYPE PoShAdapter TO STREAM outProcess
+--PROPERTIES
+--    RESULTSSTREAM = "ccl://localhost:6789/Stream/Default/TestC8Shell/inCreatedProcess",
+--    BEGINBLOCK    = 
+--[[
+--$computers = &{$args} localhost ccs01 ccs02
+--$jobs = $computers | % `
+--    {
+--        Register-WmiEvent -Class Win32_ProcessStartTrace -ComputerName $_  -Action `
+--        {
+--            $res = @{}
+--            $res['ProcessName'] = $args[1].NewEvent.ProcessName
+--            $res['ComputerName'] = $args[0].scope.Path.Server
+--            return $res
+--        }
+--    }
+--]],
+--    INPUTBLOCK    = 
+--[[
+--while ($true) 
+--{
+--    Start-Sleep -Milliseconds 100
+--    foreach ($p in (Receive-Job $jobs))
+--    {
+--        ,,($p['ProcessName'],$p['ComputerName']) # Input adapter doesn't support hashtables yet
+--    }
+--}
+--]];
+
+
+
+--CREATE OUTPUT STREAM outGmail SCHEMA TSchema;
+--
+--ATTACH OUTPUT ADAPTER PoshAdapter2 TYPE PoshAdapter
+--TO STREAM outGmail
+--PROPERTIES
+--    BEGINBLOCK  = [[ 
+--    Add-Type -AssemblyName System.Security   
+--    
+--    # via http://code.msdn.microsoft.com/CSharpGmail
+--    Add-Type -Path "C:\Program Files\Coral8\Server\bin\GmailHelper.dll" 
+--
+--    #[System.Convert]::ToBase64String([Security.Cryptography.ProtectedData]::Protect( [Text.Encoding]::UTF8.GetBytes("password"),$null,"CurrentUser"))
+--    $encPassword = "AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAa87H6SHSl0GxjKaQ0E8AjAAAAAACAAAAAAADZgAAqAAAABAAAABr5SF0/eFppWioCNxYt0dWAAAAAASAAACgAAAAEAAAAGF+BXRt0IiD6+n6DrlRw70QAAAA9PbYtSQbRXQrzCP
+--ol1IqZxQAAAA1Nh3RujAn/rOZN3MyRCsGT6CXkg=="
+--    $password = [Text.Encoding]::UTF8.GetString([Security.Cryptography.ProtectedData]::UnProtect([System.Convert]::FromBase64String($encPassword),$null,"CurrentUser"))
+--    ]],
+--    PROCESSBlock     = [[
+--            foreach ($t in $input)
+--            {
+--            [Console]::WriteLine([string]$t.toAddr);
+--                [RC.Gmail.GmailMessage]::SendFromGmail("scott.weinstein", 
+--                                        $password, 
+--                                        $t["toAddr"], $t["subject"], "it worked2");
+--            }]]
+--;
+--INSERT into outGmail values ("scottwww@squidnet.com","testFromCoral8","sdfsf")
+--OUTPUT at STARTUP;]]></QueryText>
+   </Query>
+  </Queries>
+ </Body>
+</DefineCPLModule>
